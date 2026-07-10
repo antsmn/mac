@@ -1,0 +1,9 @@
+*.log
+*.vcd
+*.vvp
+*.ron
+*.sdf
+untracked
+lib
+netlist
+misc
