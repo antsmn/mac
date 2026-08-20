@@ -1,10 +1,10 @@
 module compressor #(
-    parameter W = 8
+  parameter W = 8
 ) (
-    input  logic [W-1:0] a_i,
-    input  logic [W-4:0] c_i,
-    output logic [W-4:0] c_o,
-    output logic [  1:0] s_o
+  input  logic [W-1:0] a_i,
+  input  logic [W-4:0] c_i,
+  output logic [W-4:0] c_o,
+  output logic [  1:0] s_o
 );
   localparam NUM_FA = W - 2;
   logic [3*NUM_FA-1:0] p_1;
@@ -24,13 +24,12 @@ module compressor #(
     logic so;
     logic co;
 
-    fa i_fa
-    (
-        .a_i(a),
-        .b_i(b),
-        .c_i(c),
-        .c_o(co),
-        .s_o(so)
+    fa i_fa (
+      .a_i(a),
+      .b_i(b),
+      .c_i(c),
+      .c_o(co),
+      .s_o(so)
     );
     assign p_1[W+i*2] = c_i[i];
     assign p_1[W+i*2+1] = so;
@@ -49,13 +48,12 @@ module compressor #(
   logic so;
   logic co;
 
-  fa i_fa
-  (
-      .a_i(a),
-      .b_i(b),
-      .c_i(c),
-      .c_o(co),
-      .s_o(so)
+  fa i_fa (
+    .a_i(a),
+    .b_i(b),
+    .c_i(c),
+    .c_o(co),
+    .s_o(so)
   );
   assign s_o[0] = so;
   assign s_o[1] = co;

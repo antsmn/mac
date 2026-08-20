@@ -43,7 +43,7 @@ module mac
 
   always_ff @(posedge clk, negedge rstn) begin
     if (!rstn) p_6 <= '0;
-    else p_6       <= p_5;
+    else if (v_i) p_6 <= p_5;
   end
 
   logic [1:0][2*W-1:0] p_7;

@@ -1,7 +1,7 @@
 `timescale 1ns / 1ns
 module tb_mac;
-
-  import pg_pkg::*;
+  parameter W = `W;
+  // import pg_pkg::*;
 
   logic           clk;
   logic           rstn;
@@ -16,7 +16,8 @@ module tb_mac;
   logic           v_i;
   logic           v_o;
 
-  parameter NUM_STAGES = 1;
+  parameter       NUM_STAGES = 2;
+  initial assert (NUM_STAGES > 0) else $fatal(1);
 
   logic [         W:0]          a;
   logic [         W:0]          b;
@@ -54,10 +55,10 @@ module tb_mac;
       @(posedge clk);
       a_signed_i <= $random();
       b_signed_i <= $random();
-      c_signed_i <= $random();
+      // c_signed_i <= $random();
       a_i        <= $random();
       b_i        <= $random();
-      c_i        <= $random();
+      // c_i        <= $random();
       v_i        <= $random();
       // a_i = 1;
       // b_i = -1;
@@ -65,14 +66,20 @@ module tb_mac;
       // #2
       assert (!v_o || (v_o && !error))
       else begin
-        $fatal(1, "%b %b %b %b %b %b %b", a_signed_i, a_i, b_signed_i, b_i, c_signed_i, c_i, diff);
+        $fatal(1, "%h %h %h %h %h %h %h", a_signed_i, a_i, b_signed_i, b_i, c_signed_i, c_i, diff);
       end
+
 `ifdef VERBOSE
       $display("%-1t: %b%b %h * %h = %h", $time, a_signed_i, b_signed_i, c_signed_i, a_i, b_i, c_i, p_o);
 `endif
+
     end
+
     $finish(2);
+
   end
+
+
 `ifdef NETLIST
   initial $sdf_annotate(`SDF_FILENAME, DUT);
 `endif

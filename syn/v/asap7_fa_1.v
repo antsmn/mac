@@ -11,12 +11,13 @@ module \$fa (A, B, C, X, Y);
 
   genvar i;
 
-  for (i = 0; i < WIDTH; i = i + 1) begin : w
+  for (i = 0; i < WIDTH; i = i + 1)
+  begin : w
 
     FAx1_ASAP7_75t_R u (.A(A[i]), .B(B[i]), .CI(C[i]), .CON(NX[i]), .SN(NY[i]));
     assign X[i] = ~NX[i];
     assign Y[i] = ~NY[i];
 
-  end
+ end
 
 endmodule

@@ -7,4 +7,4 @@ $(SRC_DIR)/br4/be.sv
 $(SRC_DIR)/br4/pg.sv
 $(SRC_DIR)/csa.sv
 $(SRC_DIR)/cpa.sv
-$(SRC_DIR)/mac1.sv
+$(SRC_DIR)/mac2.sv

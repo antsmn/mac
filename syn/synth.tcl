@@ -41,7 +41,7 @@ set dont_use_args ""
 foreach cell $::env(DONT_USE_CELLS) {
     lappend dont_use_args -dont_use $cell
 }
-
+clockgate {*}$lib_args -min_net_size 8
 dfflibmap {*}$lib_args {*}$dont_use_args
 
 abc {*}$lib_args {*}$dont_use_args -dff -script $abc_script
@@ -54,6 +54,6 @@ hilomap -singleton -locell {*}$::env(TIELO_CELL_AND_PORT)
 
 check -assert
 
-write_verilog -simple-lhs -nohex -nodec -noattr -noexpr $::env(OUT_DIR)/$::env(NETLIST)
+write_verilog -simple-lhs -nohex -nodec -noattr -noexpr $::env(NETLIST)
 
 stat {*}$lib_args

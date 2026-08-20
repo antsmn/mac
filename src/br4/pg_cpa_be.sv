@@ -1,12 +1,12 @@
 module be #(
-    parameter W = 17
+  parameter W = 17
 ) (
-    input  logic [W-1:0] a1_i,
-    input  logic [W-1:0] a2_i,
-    input  logic [  1:0] x_i,
-    input  logic         c_i,
-    output logic [W-1:0] p_o,
-    output logic         n_o
+  input  logic [W-1:0] a1_i,
+  input  logic [W-1:0] a2_i,
+  input  logic [  1:0] x_i,
+  input  logic         c_i,
+  output logic [W-1:0] p_o,
+  output logic         n_o
 );
   // generate -A and carry out for + 3A encoding, use prefix-tree to generate carry out in log stages
 

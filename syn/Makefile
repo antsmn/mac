@@ -1,7 +1,8 @@
 
-include asap7.mk
+include mk/asap7.mk
 
 STA_DIR = ../sta
+PNR_DIR = ../pnr
 
 export SRC_DIR
 export OUT_DIR
@@ -21,4 +22,7 @@ YOSYS_FLAGS =
 	yosys -m slang $(YOSYS_FLAGS) -QT $<
 
 sta:
-	@make VLOG_TOP=$(VLOG_TOP) VLOG_FILES=$(OUT_DIR)/$(NETLIST) TECH_LIB="$(TECH_LIB)" -C $(STA_DIR) $@
+	@make VLOG_TOP=$(VLOG_TOP) NETLIST=$(NETLIST) TECH_LIB="$(TECH_LIB)" -C $(STA_DIR) $@
+
+pnr:
+	@make VLOG_TOP=$(VLOG_TOP) NETLIST=$(NETLIST) TECH_LIB="$(TECH_LIB)" -C $(PNR_DIR) $@

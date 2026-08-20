@@ -1,15 +1,14 @@
 module pg
   import pg_pkg::*;
 (
-    input  logic                  a_signed_i,
-    input  logic                  b_signed_i,
-    input  logic                  c_signed_i,
-    input  logic [W-1:0]          a_i,
-    input  logic [W-1:0]          b_i,
-    input  logic [W-1:0]          c_i,
-    output logic [K-1:0][2*W-1:0] p_o
+  input  logic                  a_signed_i,
+  input  logic                  b_signed_i,
+  input  logic                  c_signed_i,
+  input  logic [W-1:0]          a_i,
+  input  logic [W-1:0]          b_i,
+  input  logic [W-1:0]          c_i,
+  output logic [K-1:0][2*W-1:0] p_o
 );
-
   logic                        a_sign;
   logic                        b_sign;
   logic                        c_sign;
